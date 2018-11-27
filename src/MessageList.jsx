@@ -9,7 +9,7 @@ class MessageList extends Component {
   render () {
 
       const msgItem = this.props.messagesFromApp.map(message => (
-      <Message message={message} />
+      <Message key={message.id} message={message} />
       ));
 
     return (
