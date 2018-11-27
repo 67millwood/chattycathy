@@ -3,16 +3,42 @@ import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+  currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
+  messages: [
+    {
+      username: "Bob",
+      content: "Has anyone seen my marbles?",
+    },
+    {
+      username: "Anonymous",
+      content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
+    }
+  ]
+}
+
+  }
+  componentDidMount() {
+    // After 3 seconds, set `loading` to false in the state.
+    setTimeout(() => {
+      this.setState({loading: false}); // this triggers a re-render!
+    }, 3000)
+  }
+
   render() {
     return (
       <body>
       <nav className="navbar">
-        <a href="/" className="navbar-brand">ChattyCathy 🦋</a>
+        <a href="/" className="navbar-brand">🦋 AssChat with Cathi 🦋</a>
       </nav>
 
-      <MessageList />
+      <MessageList messagesFromApp={this.state.messages}/>
 
-      <ChatBar />
+
+
+      <ChatBar currentUser={this.state.currentUser}/>
 
       </body>
     );
