@@ -11,6 +11,10 @@ body {
       margin: 70px 0;
     }
 
+    #newmsginput {
+    visibility: hidden;
+    }
+
     .chatbar {
       background: tomato;
       border-top: 1px solid black;

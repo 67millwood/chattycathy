@@ -35,9 +35,9 @@ componentDidMount() {
   }, 3000);
 }
 
- addMsg =(msg, name) => {
+ addMsg =(msg) => {
     const newThing = {
-      username: name,
+      username: this.state.currentUser.name,
       content: msg,
       id: Math.random()
     };
