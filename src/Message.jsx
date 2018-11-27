@@ -6,8 +6,11 @@ class Messages extends Component {
   render () {
     return (
       <div>
-    <h1>from message file</h1>
-    </div>)
+    <span className="message-content">this will be a message.</span>
+      <div className="message-system">
+    this is a notification
+  </div>
+    </div>);
 
 }
 }
