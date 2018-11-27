@@ -31,7 +31,7 @@ componentDidMount() {
     //const messages = this.state.messages.concat(newMessage)
     // Update the state of the app component.
     // Calling setState will trigger a call to render() in App and all child components.
-    this.setState({messages: messages})
+    // this.setState({messages: messages})
   }, 3000);
 }
 
@@ -48,7 +48,7 @@ componentDidMount() {
 
   render() {
     return (
-      <body>
+      <div>
       <nav className="navbar">
         <a href="/" className="navbar-brand">🦋 AssChat with Cathi 🦋</a>
       </nav>
@@ -58,7 +58,7 @@ componentDidMount() {
 
       <ChatBar currentUser={this.state.currentUser} addMsg={this.addMsg}/>
 
-      </body>
+      </div>
     );
   }
 }
