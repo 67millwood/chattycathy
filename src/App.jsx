@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import MessageList from './MessageList.jsx';
 
 class App extends Component {
   render() {
     return (
-      <h1>Hello React :)</h1>
+      <div>
+      <MessageList />
+        <h1>from app file</h1>
+      </div>
     );
   }
 }
