@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <body>
       <nav className="navbar">
-        <a href="/" className="navbar-brand">Chatty</a>
+        <a href="/" className="navbar-brand">ChattyCathy 🦋</a>
       </nav>
       <MessageList />
       <ChatBar />
