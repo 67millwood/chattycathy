@@ -8,13 +8,21 @@ class ChatBar extends Component {
     const onSubmit = evt => {
       evt.preventDefault();
       const messageInput = evt.target.elements.msgName;
-      // const nameInput = evt.target.elements.name;
+    //   // const nameInput = evt.target.elements.name;
 
-      // Here, we call the function we were sent
+    //   // Here, we call the function we were sent
       this.props.addMsg(messageInput.value/*, nameInput.value*/);
 
       messageInput.value = "";
     };
+
+    // Send text to all users through the server
+
+
+        // Blank the text input element, ready to receive the next line of text from the user.
+        // messageInput.value = "";
+
+
 
     return (
         <footer className="chatbar">
