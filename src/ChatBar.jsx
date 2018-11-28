@@ -20,7 +20,6 @@ class ChatBar extends Component {
       evt.preventDefault();
       const nameInput = evt.target.elements.name;
       this.props.newUsr(nameInput.value);
-      console.log(nameInput);
 
     };
 

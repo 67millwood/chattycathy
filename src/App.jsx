@@ -21,8 +21,9 @@ componentDidMount() {
   this.socket.onmessage = (event) => {
     const niceMsg = (JSON.parse(event.data));
     const msg = {
-      username: this.state.currentUser.name,
+      username: niceMsg.username,
       content: niceMsg.content,
+      type: niceMsg.type,
       id: niceMsg.id
     };
 
@@ -40,14 +41,12 @@ componentDidMount() {
  newUsr =(usr) => {
      this.setState({currentUser: {name: usr}});
     };
-    // this.socket.send(JSON.stringify(newUsername));
-
 
  addMsg =(msg) => {
     const newThing = {
-      // username: this.state.currentUser.name,
+      username: this.state.currentUser.name,
       content: msg,
-      id: Math.random()
+      // id: Math.random()
     };
     this.socket.send(JSON.stringify(newThing));
   }
@@ -56,7 +55,7 @@ componentDidMount() {
     return (
       <div>
       <nav className="navbar">
-        <a href="/" className="navbar-brand">🦋 AssChat with Cathi 🦋</a>
+        <a href="/" className="navbar-brand"> A🦋Chat with 🐶&🕷 </a>
       </nav>
 
       <MessageList messagesFromApp={this.state.messages}/>
