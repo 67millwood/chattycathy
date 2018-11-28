@@ -8,19 +8,8 @@ class App extends Component {
     this.socket = new WebSocket(`ws://localhost:3001/`);
     this.state = {
   currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-  messages: [
-    {
-      id: 1,
-      username: "Bob",
-      content: "Has anyone seen my marbles?",
-    },
-    {
-      id: 2,
-      username: "Anonymous",
-      content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
-    }
-  ]
-}
+  messages: []
+};
 
   }
 componentDidMount() {
@@ -28,23 +17,39 @@ componentDidMount() {
   this.socket.onopen = function(event) {
     console.log("connect to the server");
   }
-  this.socket.onmessage = function(event) {
-    console.log(event.data);
+
+  this.socket.onmessage = (event) => {
+    const niceMsg = (JSON.parse(event.data));
+    const msg = {
+      username: this.state.currentUser.name,
+      content: niceMsg.content,
+      id: niceMsg.id
+    };
+
+    const oldmsgNames = this.state.messages;
+    const newmsgNames = [...oldmsgNames, msg];
+    this.setState({messages: newmsgNames})
+
   }
+
   setTimeout(() => {
 
   }, 3000);
 }
 
+ newUsr =(usr) => {
+     this.setState({currentUser: {name: usr}});
+    };
+    // this.socket.send(JSON.stringify(newUsername));
+
+
  addMsg =(msg) => {
     const newThing = {
-      username: this.state.currentUser.name,
+      // username: this.state.currentUser.name,
       content: msg,
       id: Math.random()
     };
-    const oldmsgNames = this.state.messages;
-    const newmsgNames = [...oldmsgNames, newThing];
-    this.socket.send("gfy");
+    this.socket.send(JSON.stringify(newThing));
   }
 
   render() {
@@ -57,7 +62,7 @@ componentDidMount() {
       <MessageList messagesFromApp={this.state.messages}/>
 
 
-      <ChatBar currentUser={this.state.currentUser} addMsg={this.addMsg} />
+      <ChatBar currentUser={this.state.currentUser} addMsg={this.addMsg} newUsr={this.newUsr} />
 
       </div>
     );
