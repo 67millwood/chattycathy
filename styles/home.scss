@@ -61,6 +61,13 @@ body {
       padding: 0 10px;
     }
 
+    .notification-content {
+      color: red;
+      overflow: hidden;
+      margin: 5px;
+      padding: 0 10px;
+    }
+
     .message-content {
       flex: 8;
     }
