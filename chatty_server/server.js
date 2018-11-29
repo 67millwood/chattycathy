@@ -22,6 +22,7 @@ wss.broadcast = function broadcast(data) {
   });
 };
 
+
 createMessage = (message) => {
   const cleanMsg = JSON.parse(message);
   cleanMsg.id = uuidv4();
@@ -39,9 +40,9 @@ createNotification = (notification) => {
 };
 
 updateCount = (count) => {
-  const cleanNum = JSON.parse(count);
+  const cleanNum = {};
+  cleanNum.count = count;
   cleanNum.id = uuidv4();
-  cleanNum.count = count,
   cleanNum.type = 'count';
   return cleanNum;
 }

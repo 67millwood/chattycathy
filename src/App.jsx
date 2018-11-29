@@ -21,11 +21,11 @@ componentDidMount() {
 
   this.socket.onmessage = (event) => {
     const niceMsg = (JSON.parse(event.data));
-    // console.log(niceMsg);
+    console.log(niceMsg);
     // console.log(niceMsg.type);
     // console.log(niceMsg.id);
-    if (niceMsg.type !== 'incomingNotification' || 'incomingMessage') {
-      this.setState({usersOnline: niceMsg})
+    if (niceMsg.type === 'count') {
+      this.setState({usersOnline: niceMsg.count})
     } else {
     const msg = {
       username: niceMsg.username,
@@ -38,7 +38,7 @@ componentDidMount() {
     const newmsgNames = [...oldmsgNames, msg];
     this.setState({messages: newmsgNames})
   }
-  }
+}
 
   setTimeout(() => {
 
