@@ -28,12 +28,27 @@ body {
 
     .chatbar-message,
     .chatbar-username {
+
       border: 1px solid black;
       display: block;
       height: 40px;
       line-height: 40px;
       margin: 5px;
       padding: 0 9px;
+    }
+
+    .chatbar-message {
+
+      width: 100%;
+      border: 1px solid black;
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      margin: 5px;
+      padding: 0 9px;
+    }
+
+    #forms {
     }
 
     #usercount {
