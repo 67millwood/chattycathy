@@ -1,5 +1,4 @@
 // server.js
-
 const express = require('express');
 const SocketServer = require('ws').Server;
 const uuidv4 = require('uuid/v4');
@@ -27,7 +26,6 @@ createMessage = (message) => {
   const cleanMsg = JSON.parse(message);
   cleanMsg.id = uuidv4();
   cleanMsg.type = 'incomingMessage';
-  // console.log(cleanMsg);
   return cleanMsg;
 };
 
@@ -35,7 +33,6 @@ createNotification = (notification) => {
   const cleanNotify = JSON.parse(notification);
   cleanNotify.id = uuidv4();
   cleanNotify.type = 'incomingNotification';
-  // console.log(cleanNotify);
   return cleanNotify;
 };
 
@@ -45,23 +42,21 @@ updateCount = (count) => {
   cleanNum.id = uuidv4();
   cleanNum.type = 'count';
   return cleanNum;
-}
+};
 
 wss.on('connection', (ws) => {
-  console.log(`Clients connected ${wss.clients.size}`);
   wss.broadcast(updateCount(wss.clients.size));
   ws.on('message', function incoming(data) {
     const clean = JSON.parse(data)
     if (clean.type === 'postMessage') {
     wss.broadcast(createMessage(data));
-  } else {
+    } else {
     wss.broadcast(createNotification(data))
-  }
+    }
   });
 
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
   ws.on('close', () => {
-    console.log(`Clients connected ${wss.clients.size}`);
     wss.broadcast(updateCount(wss.clients.size));
 });
   //

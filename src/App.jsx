@@ -7,43 +7,39 @@ class App extends Component {
     super(props);
     this.socket = new WebSocket(`ws://localhost:3001/`);
     this.state = {
-  currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-  messages: [],
-  usersOnline: 0
-};
-
-  }
-componentDidMount() {
-  console.log("componentDidMount <App />");
-  this.socket.onopen = function(event) {
-    console.log("connect to the server");
-  }
-
-  this.socket.onmessage = (event) => {
-    const niceMsg = (JSON.parse(event.data));
-    console.log(niceMsg);
-    // console.log(niceMsg.type);
-    // console.log(niceMsg.id);
-    if (niceMsg.type === 'count') {
-      this.setState({usersOnline: niceMsg.count})
-    } else {
-    const msg = {
-      username: niceMsg.username,
-      content: niceMsg.content,
-      type: niceMsg.type,
-      id: niceMsg.id
+      currentUser: {name: "Anonymous"},
+      messages: [],
+      usersOnline: 0
     };
 
-    const oldmsgNames = this.state.messages;
-    const newmsgNames = [...oldmsgNames, msg];
-    this.setState({messages: newmsgNames})
   }
-}
+  componentDidMount() {
+    console.log("componentDidMount <App />");
+    this.socket.onopen = function(event) {
+      console.log("connect to the server");
+    }
 
-  setTimeout(() => {
+    this.socket.onmessage = (event) => {
+      const niceMsg = (JSON.parse(event.data));
+      console.log(niceMsg);
+        if (niceMsg.type === 'count') {
+          this.setState({usersOnline: niceMsg.count})
+        } else {
+        const msg = {
+          username: niceMsg.username,
+          content: niceMsg.content,
+          type: niceMsg.type,
+          id: niceMsg.id
+        };
 
-  }, 3000);
-}
+      const oldmsgNames = this.state.messages;
+      const newmsgNames = [...oldmsgNames, msg];
+      this.setState({messages: newmsgNames})
+      }
+    }
+
+  setTimeout(() => {}, 3000);
+  }
 
  newUsr =(usr) => {
       // const newName = this.state.currentUser.name;
