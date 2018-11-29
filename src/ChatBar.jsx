@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-
+/*ChatBar component has responsiblity for:
+ - accepting usernames
+ - accepting messages
+ There are two functions for processing the content from two forms
+*/
 class ChatBar extends Component {
   render() {
 
