@@ -39,11 +39,11 @@ componentDidMount() {
 }
 
  newUsr =(usr) => {
-      const oldName = this.state.currentUser.name;
+      // const newName = this.state.currentUser.name;
      this.setState({currentUser: {name: usr}});
      const notifyNameChange = {
       type: 'postNotification',
-      content: `${oldName} has changed their name to ${this.state.currentUser.name}`
+      content: `${this.state.currentUser.name} has changed their name to ${usr}`
      }
      this.socket.send(JSON.stringify(notifyNameChange));
     };
