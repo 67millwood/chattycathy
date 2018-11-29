@@ -38,8 +38,17 @@ createNotification = (notification) => {
   return cleanNotify;
 };
 
+updateCount = (count) => {
+  const cleanNum = JSON.parse(count);
+  cleanNum.id = uuidv4();
+  cleanNum.count = count,
+  cleanNum.type = 'count';
+  return cleanNum;
+}
+
 wss.on('connection', (ws) => {
   console.log(`Clients connected ${wss.clients.size}`);
+  wss.broadcast(updateCount(wss.clients.size));
   ws.on('message', function incoming(data) {
     const clean = JSON.parse(data)
     if (clean.type === 'postMessage') {
@@ -50,6 +59,9 @@ wss.on('connection', (ws) => {
   });
 
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
-  ws.on('close', () => console.log(`Clients connected ${wss.clients.size}`));
+  ws.on('close', () => {
+    console.log(`Clients connected ${wss.clients.size}`);
+    wss.broadcast(updateCount(wss.clients.size));
+});
   //
 });

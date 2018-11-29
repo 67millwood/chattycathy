@@ -8,7 +8,8 @@ class App extends Component {
     this.socket = new WebSocket(`ws://localhost:3001/`);
     this.state = {
   currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-  messages: []
+  messages: [],
+  usersOnline: 0
 };
 
   }
@@ -20,6 +21,12 @@ componentDidMount() {
 
   this.socket.onmessage = (event) => {
     const niceMsg = (JSON.parse(event.data));
+    // console.log(niceMsg);
+    // console.log(niceMsg.type);
+    // console.log(niceMsg.id);
+    if (niceMsg.type !== 'incomingNotification' || 'incomingMessage') {
+      this.setState({usersOnline: niceMsg})
+    } else {
     const msg = {
       username: niceMsg.username,
       content: niceMsg.content,
@@ -30,7 +37,7 @@ componentDidMount() {
     const oldmsgNames = this.state.messages;
     const newmsgNames = [...oldmsgNames, msg];
     this.setState({messages: newmsgNames})
-
+  }
   }
 
   setTimeout(() => {
@@ -62,6 +69,7 @@ componentDidMount() {
       <div>
       <nav className="navbar">
         <a href="/" className="navbar-brand"> A🦋Chat with 🐶&🕷 </a>
+        <p id="usercount">Users Online: {this.state.usersOnline}</p>
       </nav>
 
       <MessageList messagesFromApp={this.state.messages}/>
