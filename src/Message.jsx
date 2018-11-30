@@ -7,6 +7,8 @@ It returns all messages after applying the correct CSS for notification v. regul
 class Message extends Component {
   render () {
 
+    const styleObject = { color: 'DodgerBlue'};
+
     if (this.props.message.type === 'incomingNotification') {
       return (
         <div>
@@ -16,8 +18,8 @@ class Message extends Component {
     } else {
     return (
       <div>
-          <span className="message-username">{this.props.message.username}</span>
-          <span className="message-content">{this.props.message.content}</span>
+          <span className="message-username" style={styleObject}>{this.props.message.username}</span>
+          <span className="message-content" >{this.props.message.content}</span>
       </div>);
 
           }

@@ -53,7 +53,7 @@ getRandomInt = (max) => {
 }
 
 pickColor = () => {
-  colors = ["8E2A14", "141F8E", "C3F90D", "E5EC0B"];
+  colors = ["DodgerBlue", "Orange", "MediumSeaGreen", "LightGray"];
   const choice = colors[getRandomInt(4)]
   return choice
 }

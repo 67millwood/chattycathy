@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       currentUser: {name: "Anonymous"},
       messages: [],
-      usersOnline: 0
+      usersOnline: 0,
+      userColor: 'SlateBlue'
     };
   }
 
@@ -28,7 +29,8 @@ class App extends Component {
       const niceMsg = (JSON.parse(event.data));
       console.log(niceMsg);
         if (niceMsg.type === 'count') {
-          this.setState({usersOnline: niceMsg.count})
+          this.setState({usersOnline: niceMsg.count});
+          this.setState({userColor: niceMsg.color})
         } else {
         const msg = {
           username: niceMsg.username,
