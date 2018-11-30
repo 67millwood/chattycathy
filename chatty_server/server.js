@@ -44,8 +44,19 @@ updateCount = (count) => {
   cleanNum.count = count;
   cleanNum.id = uuidv4();
   cleanNum.type = 'count';
+  cleanNum.color = pickColor();
   return cleanNum;
 };
+
+getRandomInt = (max) => {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+pickColor = () => {
+  colors = ["8E2A14", "141F8E", "C3F90D", "E5EC0B"];
+  const choice = colors[getRandomInt(4)]
+  return choice
+}
 
 /*functions to control actions once a connection is established
  - first broadcast is called with updateCount (both above) to send a message to the client with the total number of all clients connected
