@@ -105,23 +105,16 @@ Important folders and files are indicated in the tree diagram below:
 
 ## Screenshots
 
-#### Homescreen:
-![alt text](build/ewok.jpg)
+#### Message Log:
+![alt text](build/messagedetails.png)
 
-#### Menu:
-![alt text](public/assets/screenshots/menu.png)
+#### Multi User Chat:
+![alt text](build/3userchat.png)
 
-#### Cart with dynamic pricing changes:
-![alt text](public/assets/screenshots/cart.png)
+#### New Users and User Count:
+![alt text](build/4users.png)
 
 #### Initial SMS to user(customer) and restaurant:
 
 ![alt text](public/assets/screenshots/initialsms.png)
 
-#### Order page where restaurant can set pickup time and custom message:
-
-![alt text](public/assets/screenshots/orderandtimeset.png)
-
-#### Final SMS to user indicating time for pickup:
-
-![alt text](public/assets/screenshots/timesenttouser.png)
