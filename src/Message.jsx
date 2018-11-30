@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-
+/*Message is a child component of MessageList and App which takes its props from MessageList in order to format all the messages
+It returns all messages after applying the correct CSS for notification v. regular messages.
+*/
 class Message extends Component {
   render () {
 
