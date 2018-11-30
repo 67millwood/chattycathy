@@ -6,18 +6,29 @@ Users are provided a menu of items to add to a shopping cart.  They may remove i
 
 ## Dependencies
 
-  - body-parser 1.15.2
-  - card 2.4.0
-  - cookie-session 2.0.0-beta.3
-  - dotenv 2.0.0
-  - ejs 2.4.1
-  - express 4.13.4
-  - knex 0.11.7
-  - knex-logger 0.1.0
-  - morgan 1.7.0
-  - node-sass-middleware 0.9.8
-  - pg 6.0.2
-  - twilio 3.23.2
+devDependencies:
+    - "babel-core": "6.23.1",
+    - "babel-loader": "6.3.1",
+    - "babel-preset-es2015": "6.22.0",
+    - "babel-preset-react": "6.23.0",
+    - "babel-preset-stage-0": "6.22.0",
+    - "css-loader": "0.26.1",
+    - "eslint": "3.15.0",
+    - "eslint-plugin-react": "6.9.0",
+    - "node-sass": "4.5.0",
+    - "sass-loader": "6.0.0",
+    - "sockjs-client": "^1.1.2",
+    - "style-loader": "0.13.1",
+    - "webpack": "2.2.1",
+    - "webpack-dev-server": "2.3.0"
+
+
+dependencies:
+    - "express": "4.16.4",
+    - "react": "15.4.2",
+    - "react-dom": "15.4.2",
+    - "uuid": "^3.3.2",
+    - "ws": "6.1.2"
 
 ## Getting Started
 
@@ -65,7 +76,7 @@ SMS: upon restaurant owner selecting a time or cancelling order
 Important folders and files are indicated in the tree diagram below:
 
 <ul>
-  <li>/Amedus</li>
+  <li>/react-simple-boilerplate:  holdover name for React driven app Chatty</li>
   <ul>
     <li>/build: contains images</li>
     <li>/chatty_server</li>
@@ -91,7 +102,7 @@ Important folders and files are indicated in the tree diagram below:
     <li>webpack.config.js: webpack setup files</li>
   </ul>
 </ul>
-```
+
 
 
 ## Screenshots
