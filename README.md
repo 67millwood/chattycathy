@@ -67,37 +67,28 @@ Important folders and files are indicated in the tree diagram below:
 <ul>
   <li>/Amedus</li>
   <ul>
-    <li>/db</li>
+    <li>/build: contains images</li>
+    <li>/chatty_server</li>
     <ul>
-      <li>/migrations: list of previous dB migraitons</li>
-      <li>/seeds: intial data set of menu items and test orders</li>
+      <li>server.js: runs the express server and websocket functionality on port 3001</li>
     </ul>
-    <li>/public</li>
+    <li>/src</li>
     <ul>
-      <li>/assets: contains graphics and screenshots</li>
-      <li>/css: styling </li>
-      <li>/dist</li>
-      <li>/saas</li>
-      <li>/scripts</li>
-      <li>/vendor</li>
+      <li>App.jsx: the Parent component that communicates with the websocket server</li>
+      <li>ChatBar.jsx: child component to App which takes user content for username and messages</li>
+      <li>Message.jsx: child component to MessageList which renders styling on messages</li>
+      <li>MessageList.jsx: Parent to Messages, child to App is the container for the message log</li>
     </ul>
-    <li>/routes</li>
+    <li>/styles</li>
     <ul>
-      <li>cart.js: </li>
-      <li>checkout.js:</li>
-      <li>orderdisplay.js:</li>
+      <li>application.scss </li>
+      <li>home.scss: main css file for styling</li>
     </ul>
-    <li>/views</li>
-    <ul>
-      <li>/partials: </li>
-      <li>checkout.ejs</li>
-      <li>index.ejs: </li>
-      <li>orderdisplay.ejs: </li>
-    </ul>
-    <li>README.md</li>
-    <li>knexfile.js</li>
+    <li>index.html: shell for the dynamically created HTML via React components</li>
     <li>package.json</li>
-    <li>server.js</li>
+    <li>README.md</li>
+    <li>server.js: simple server that runs the app on port 3000 </li>
+    <li>webpack.config.js: webpack setup files</li>
   </ul>
 </ul>
 ```
@@ -106,6 +97,7 @@ Important folders and files are indicated in the tree diagram below:
 ## Screenshots
 
 #### Message Log:
+
 ![alt text](build/messagedetails.png)
 
 #### Multi User Chat:
@@ -114,7 +106,5 @@ Important folders and files are indicated in the tree diagram below:
 #### New Users and User Count:
 ![alt text](build/4users.png)
 
-#### Initial SMS to user(customer) and restaurant:
 
-![alt text](public/assets/screenshots/initialsms.png)
 
