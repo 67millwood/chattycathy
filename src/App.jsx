@@ -28,12 +28,14 @@ class App extends Component {
     this.socket.onmessage = (event) => {
       const niceMsg = (JSON.parse(event.data));
       console.log(niceMsg);
+      console.log(this.state.userColor);
         if (niceMsg.type === 'count') {
           this.setState({usersOnline: niceMsg.count});
           this.setState({userColor: niceMsg.color})
         } else {
         const msg = {
           username: niceMsg.username,
+          color: this.state.userColor,
           content: niceMsg.content,
           type: niceMsg.type,
           id: niceMsg.id

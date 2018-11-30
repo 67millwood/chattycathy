@@ -7,8 +7,8 @@ It returns all messages after applying the correct CSS for notification v. regul
 class Message extends Component {
   render () {
 
-    const styleObject = { color: 'DodgerBlue'};
-
+    const styleObject = { color: this.props.message.color};
+    console.log(this.props.message.color);
     if (this.props.message.type === 'incomingNotification') {
       return (
         <div>
