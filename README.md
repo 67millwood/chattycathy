@@ -58,6 +58,10 @@ Users online:
 - websocket server logs when users connect to the site and publishes (wss.clients.size) which gives the total number of connected users
 - server also logs users when they disconnect and then updates the number of users online in real time
 
+Username color changes (stretch...partially complete):
+- each user is assigned a new random (from 4) color for the text of their own username
+- still working this stretch project to maintain 
+
 ## File Structure
 
 Important folders and files are indicated in the tree diagram below:
