@@ -44,7 +44,7 @@ updateCount = (count) => {
   cleanNum.count = count;
   cleanNum.id = uuidv4();
   cleanNum.type = 'count';
-  cleanNum.color = pickColor();
+  // cleanNum.color = pickColor();
   return cleanNum;
 };
 
@@ -58,6 +58,15 @@ pickColor = () => {
   return choice
 }
 
+changeColor = () => {
+  const newColor = {};
+  newColor.color = pickColor();
+  newColor.type = 'colorchange';
+  return JSON.stringify(newColor);
+}
+
+
+
 /*functions to control actions once a connection is established
  - first broadcast is called with updateCount (both above) to send a message to the client with the total number of all clients connected
  - when a message comes into the server the data is parsed, and the type is assessed as either a 'notification' or 'regular' message
@@ -65,6 +74,7 @@ pickColor = () => {
  - if a client disconnects, broadcast is called to send an updated user count to the client
 */
 wss.on('connection', (ws) => {
+  ws.send(changeColor());
   wss.broadcast(updateCount(wss.clients.size));
   ws.on('message', function incoming(data) {
     const clean = JSON.parse(data)

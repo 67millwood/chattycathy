@@ -31,6 +31,7 @@ class App extends Component {
       console.log(this.state.userColor);
         if (niceMsg.type === 'count') {
           this.setState({usersOnline: niceMsg.count});
+        } else if (niceMsg.type === 'colorchange') {
           this.setState({userColor: niceMsg.color})
         } else {
         const msg = {
