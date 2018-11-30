@@ -1,8 +1,8 @@
 # Chatty App
 
-Amedus is a simple restaurant app.
+Chatty App is a simple chat app.  It was renamed to include emojis for enteratinment purposes.
 
-Users are provided a menu of items to add to a shopping cart.  They may remove items from the cart as well as increase the quanity of a particular item.  Pricing totals will update dynamically.  Once the user confirms their order they provide their telephone number and payment information (payment info for placeholding purposes only).  The user is sent an SMS confirming their order while the restaurant is sent an SMS indicating an order has been placed (the user name, telephone number and a link to review the user order is provided).  The restaurant owner has the option to click the link in the SMS and choose to edit the time for order pickup, cancel the order and add an optional custom message.  The contents of the message are sent via SMS to the user.
+Users are provided single page app where they can choose a username and write messages.  All messages created will publish to the screen on ENTER keypress.  Users can enter a new name to be attached to all messages.  Any user who has access to the site will see near instant publication of their messages as well as those using the site (see screenshots simulating three users having a conversation).  Additionally, there is a live count of users connected to the site that will change dynamically as new users connect and disconnect.  The app is built on a React and Websocket base.
 
 ## Dependencies
 
@@ -32,44 +32,31 @@ dependencies:
 
 ## Getting Started
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information
-3. Install dependencies: `npm i`
-4. Run migrations: `npm run knex migrate:latest`
-  - Check the migrations folder to see what gets created in the DB
-5. Run the seed: `npm run knex seed:run`
-  - Check the seeds file to see what gets seeded in the DB
-6. Run the  server: `node server.js`
-7. Visit `http://localhost:8080/`
-8. Enjoy!
+1. Install all dependencies
+2. Navigate to the chatty_server directory and run: node server.js
+3. In a seperate console, navigate to the root directory and type:  npm start.
+4. Open mulitple browser windows and navigate to:  localhost:3000
+5. Choose different usernames in each window and type messages into each to see real time updates across all browsers
+6. Note the 'Users Online' count increases and decreases with new connected users.`
+7. Enjoy!
 
 ## Functionality
 
-Main menu page (/)...customer can:
-- add an item to cart
-- cart changes dynamically
-- click cart to go to cart page
+Messages:
+- user types content into message box and presses enter
+- client sends message to server, it is tagged with a message type telling the sever it is a regular message
+- server assigns a unique ID to the message and returns a string to the client
+- client formats the message with CSS and publishes content to the screen
+- all connected users see the new message and the username of the person who created it
 
-Cart page (/checkout)...customer can:
-- view all items in cart
-- add or reduce quantity of a particular item in cart
-- remove an item from cart
-- return to menu to add more items
+Notifications:
+- a user changes their name by typing it into the provides text box and presses enter
+- server is notified of the name change, assigns a unique id and send it back to the client App to be published.
+- all connected users see a notification of the name change
 
-SMS: upon confirmation of an order:
-- SMS sent to customer thanking them and telling them a pickup time will be sent
-- SMS sent to restuarant with link to order to view order, set pickup time, cancel order and set an optional custom message
-
-Order and time for pickup page (/orderdisplay/uniqueordernumber)...restaurant owner can:
-- view username, phone number of customer who ordered
-- see all items and total cost of order
-- select 5, 15, 30 minutes OR cancel order
-- provide an optional custom message
-
-SMS: upon restaurant owner selecting a time or cancelling order
-- customer is informed of pickup time OR order has been cancelled
-- customer recieves any custom message created by restuarant
-
+Users online:
+- websocket server logs when users connect to the site and publishes (wss.clients.size) which gives the total number of connected users
+- server also logs users when they disconnect and then updates the number of users online in real time
 
 ## File Structure
 
